@@ -5,6 +5,7 @@
     "description": """""",
     "data": [
         "security/ir.model.access.csv",
+        "views/liabilities_views.xml",
         "views/res_partner_views.xml",
         "views/crm_lead_views.xml",
 

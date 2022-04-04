@@ -28,6 +28,7 @@
                         <page string="Occupation details" name="occupation_details">
                             <group>
                                 <group>
+                                    <field name="currency_id" invisible="1"/>
                                     <field name="function" placeholder="e.g. Sales Director"/>
                                     <field name="emp_status" string="Employment status"/>
                                     <field name="empty_field" string=""/>
@@ -45,8 +46,8 @@
                                     <field name="last_3_years_income" string="Last 3 years’ income" widget="monetary"/>
                                     <field name="last_2_years_income" string="" widget="monetary"/>
                                     <field name="last_1_years_income" string="" widget="monetary"/>
-                                    <field name="projected_earnings" string="Projected earnings for this tax year"/>
-                                    <field name="projected_earnings_next"
+                                    <field name="projected_earnings" widget="monetary" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings_next" widget="monetary"
                                            string="Projected earnings for next tax year"/>
                                 </group>
                                 <group>
@@ -142,8 +143,8 @@
                                            widget="monetary"/>
                                     <field name="last_2_years_income_2" string="" widget="monetary"/>
                                     <field name="last_1_years_income_2" string="" widget="monetary"/>
-                                    <field name="projected_earnings_2" string="Projected earnings for this tax year"/>
-                                    <field name="projected_earnings_next_2"
+                                    <field name="projected_earnings_2" widget="monetary" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings_next_2" widget="monetary"
                                            string="Projected earnings for next tax year"/>
                                 </group>
                                 <group>
