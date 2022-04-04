@@ -1,0 +1,368 @@
+<odoo>
+    <record id="crm_lead_view_form_inherit" model="ir.ui.view">
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook//page[@name='internal_notes']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='extra']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='lead']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="before">
+                <field name="first_partner" invisible="1"/>
+                <field name="second_partner"/>
+                <field name="partner_id_2" attrs="{'invisible': [('second_partner', '!=', True)]}"/>
+                <field name="email_from_2" attrs="{'invisible': [('second_partner', '!=', True)]}"
+                       string="Email of second customer"/>
+                <field name="phone_2" attrs="{'invisible': [('second_partner', '!=', True)]}"
+                       string="Phone of second customer"/>
+            </xpath>
+            <xpath expr="//notebook//page[@name='internal_notes']" position="after">
+                <page string="Customer details" name="customer_details"
+                      attrs="{'invisible': [('first_partner', '!=', True)]}">
+                    <notebook>
+                        <page string="Occupation details" name="occupation_details">
+                            <group>
+                                <group>
+                                    <field name="function" placeholder="e.g. Sales Director"/>
+                                    <field name="emp_status" string="Employment status"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="Primary income (employed/PAYE)"/>
+                                    <field name="employee_name" string="Employer’s Name"/>
+                                    <field name="status" string="Status (contract/full time)"/>
+                                    <field name="length_of_employment"
+                                           string="Length of time in employment/start date"/>
+                                    <field name="probationary" string="Are you in a probationary period?"/>
+                                    <field name="total_annual" widget="monetary" string="Total annual income"/>
+                                    <field name="addresses" string="Employer’s Address"/>
+                                    <field name="significant_details" string="Significant details"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="primary income (self employed)"/>
+                                    <field name="last_3_years_income" string="Last 3 years’ income" widget="monetary"/>
+                                    <field name="last_2_years_income" string="" widget="monetary"/>
+                                    <field name="last_1_years_income" string="" widget="monetary"/>
+                                    <field name="projected_earnings" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings_next"
+                                           string="Projected earnings for next tax year"/>
+                                </group>
+                                <group>
+                                    <field name="contract_years" string="Number of years accounts available"/>
+                                    <field name="anticipate_changes"
+                                           string="Do you anticipate any changes to your circumstances or employment?"/>
+                                    <field name="description" string="If so, please describe"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="note"
+                                           string="Notes box (other income, previous employment details, etc)"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="Post-retirement income"/>
+                                    <field name="planned_age" string="Planned retirement age"/>
+                                    <field name="is_happy"
+                                           string="Are you happy for a loan to run beyond your retirement date"/>
+                                    <field name="post_retirement" widget="monetary"
+                                           string="Anticipated post-retirement income"/>
+                                    <field name="assets" string="On which assets is the above estimate based?"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Home details" name="home_details">
+                            <group>
+                                <group>
+                                    <field name="owner" string="Please choose as appropriate"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="Existing Home"/>
+                                    <field name="pur_date" string="Purchase date"/>
+                                    <field name="pur_price" string="Purchase price"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="Existing mortgage"/>
+                                    <field name="repayment_method" string="Repayment method"/>
+                                    <field name="lender" string="Lender"/>
+                                    <field name="amount_outstanding" string="Amount outstanding" widget="monetary"/>
+                                    <field name="term_remaining" string="Term remaining"/>
+                                    <field name="monthly_payment" string="Monthly payment" widget="monetary"/>
+                                    <field name="additional_notes" string="Additional notes"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string="if renting or living with parents"/>
+                                    <field name="monthly_rent" string="Monthly rent paid"/>
+                                    <field name="electoral" string="On electoral roll at this address"/>
+                                </group>
+                                <group>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="pur_current" string="Current value"/>
+                                    <field name="mortgage" string="Have you got a mortgage?"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="interest_rate" string="Interest rate"/>
+                                    <field name="rate_type" string="Rate type"/>
+                                    <field name="transfer_penalty" string="Transfer penalty"/>
+                                    <field name="end_date" string="End date (for penalties)"/>
+                                    <field name="ownership" string="Ownership of property"/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="empty_field" string=""/>
+                                    <field name="tenancy_date" string="Date tenancy started"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Liabilities" name="liabilities">
+                            <group>
+                                <group>
+                                    <field name="liabilities"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </page>
+                <page string="Second Customer details" name="second_customer_details"
+                      attrs="{'invisible': [('second_partner', '!=', True)]}">
+                    <notebook>
+                        <page string="Occupation details" name="occupation_details_2">
+                            <group>
+                                <group>
+                                    <field name="function_2" placeholder="e.g. Sales Director"/>
+                                    <field name="emp_status_2" string="Employment status"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="Primary income (employed/PAYE)"/>
+                                    <field name="employee_name_2" string="Employer’s Name"/>
+                                    <field name="status_2" string="Status (contract/full time)"/>
+                                    <field name="length_of_employment_2"
+                                           string="Length of time in employment/start date"/>
+                                    <field name="probationary_2" string="Are you in a probationary period?"/>
+                                    <field name="total_annual_2" widget="monetary" string="Total annual income"/>
+                                    <field name="addresses_2" string="Employer’s Address"/>
+                                    <field name="significant_details_2" string="Significant details"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="primary income (self employed)"/>
+                                    <field name="last_3_years_income_2" string="Last 3 years’ income"
+                                           widget="monetary"/>
+                                    <field name="last_2_years_income_2" string="" widget="monetary"/>
+                                    <field name="last_1_years_income_2" string="" widget="monetary"/>
+                                    <field name="projected_earnings_2" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings_next_2"
+                                           string="Projected earnings for next tax year"/>
+                                </group>
+                                <group>
+                                    <field name="contract_years_2" string="Number of years accounts available"/>
+                                    <field name="anticipate_changes_2"
+                                           string="Do you anticipate any changes to your circumstances or employment?"/>
+                                    <field name="description_2" string="If so, please describe"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="note_2"
+                                           string="Notes box (other income, previous employment details, etc)"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="Post-retirement income"/>
+                                    <field name="planned_age_2" string="Planned retirement age"/>
+                                    <field name="is_happy_2"
+                                           string="Are you happy for a loan to run beyond your retirement date"/>
+                                    <field name="post_retirement_2" widget="monetary"
+                                           string="Anticipated post-retirement income"/>
+                                    <field name="assets_2" string="On which assets is the above estimate based?"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Home details" name="home_details_2">
+                            <group>
+                                <group>
+                                    <field name="owner_2" string="Please choose as appropriate"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="Existing Home"/>
+                                    <field name="pur_date_2" string="Purchase date"/>
+                                    <field name="pur_price_2" string="Purchase price"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="Existing mortgage"/>
+                                    <field name="repayment_method_2" string="Repayment method"/>
+                                    <field name="lender_2" string="Lender"/>
+                                    <field name="amount_outstanding_2" string="Amount outstanding" widget="monetary"/>
+                                    <field name="term_remaining_2" string="Term remaining"/>
+                                    <field name="monthly_payment_2" string="Monthly payment" widget="monetary"/>
+                                    <field name="additional_notes_2" string="Additional notes"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string="if renting or living with parents"/>
+                                    <field name="monthly_rent_2" string="Monthly rent paid"/>
+                                    <field name="electoral_2" string="On electoral roll at this address"/>
+                                </group>
+                                <group>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="pur_current_2" string="Current value"/>
+                                    <field name="mortgage_2" string="Have you got a mortgage?"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="interest_rate_2" string="Interest rate"/>
+                                    <field name="rate_type_2" string="Rate type"/>
+                                    <field name="transfer_penalty_2" string="Transfer penalty"/>
+                                    <field name="end_date_2" string="End date (for penalties)"/>
+                                    <field name="ownership_2" string="Ownership of property"/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="empty_field_2" string=""/>
+                                    <field name="tenancy_date_2" string="Date tenancy started"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Liabilities" name="liabilities_2">
+                            <group>
+                                <group>
+                                    <field name="liabilities_2" string="Liabilities"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </page>
+                <page name="income" string="Income">
+                    <group>
+                        <group>
+                            <field name="salary" string="Gross Annual Salary" widget="monetary"/>
+                            <field name="overtime" string="Regular overtime" widget="monetary"/>
+                            <field name="bonus" string="Bonus" widget="monetary"/>
+                            <field name="benefits" string="Benefits (P11D, car, PMI &amp;c.)" widget="monetary"/>
+                            <field name="investment" string="Investment Income, Pension Income &amp;c."
+                                   widget="monetary"/>
+                            <field name="rental" string="Rental income" widget="monetary"/>
+                            <field name="other" string="Other income" widget="monetary"/>
+                            <field name="annual" string="Total annual income" widget="monetary"/>
+                        </group>
+                        <group>
+                            <field name="anticipate" string="Do you anticipate any changes to your income? "/>
+                            <field name="if_yes" string="If yes, please provide details"/>
+                            <field name="net_per_month" string="Net Income per month" widget="monetary"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="expenses" string="Expenses per month">
+                    <group>
+                        <group>
+                            <field name="rent" widget="monetary" string="Mortgage/Rent (Home)"/>
+                            <field name="investments" widget="monetary" string="Mortgage(s) (Investment)"/>
+                            <field name="repayments" widget="monetary" string="Monthly Loan Repayments"/>
+                            <field name="credit_cards" widget="monetary" string="Credit Cards"/>
+                            <field name="household_bills" widget="monetary" string="Utilities &amp; Household Bills "/>
+                            <field name="council" widget="monetary" string="Council Tax"/>
+                            <field name="food_living" widget="monetary" string="Food/Living Costs"/>
+                            <field name="insurances" widget="monetary" string="Financial Planning – Insurances"/>
+                            <field name="pensions" widget="monetary" string="Financial Planning – Pensions"/>
+                            <field name="note_expenses"
+                                   string="Apart from changes to you mortgage/rent expenses that will be clarified elsewhere, please describe how you expect your regular expenditure to change in the foreseeable future. These changes might relate to moving house or other aspects of your circumstances"/>
+                        </group>
+                        <group>
+                            <field name="ground_rent" widget="monetary" string="Service Charge/Ground Rent"/>
+                            <field name="insurance" widget="monetary" string="Buildings Insurance"/>
+                            <field name="school_fees" widget="monetary" string="School Fees"/>
+                            <field name="childcare" widget="monetary" string="Childcare"/>
+                            <field name="social_expenses" widget="monetary" string="Social Expenses"/>
+                            <field name="travel_expenses" widget="monetary" string="Travel Expenses"/>
+                            <field name="holidays" widget="monetary" string="Holidays"/>
+                            <field name="other_expenses" widget="monetary" string="Other Expenses"/>
+                            <field name="total_expenses" widget="monetary" string="Total Regular Commitments"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="new_mortgage_preferences" string="New mortgage preferences">
+                    <group>
+                        <group>
+                            <field name="reason" string="Reason advice sought"/>
+                            <field name="house_price" string="House price you’re considering" widget="monetary"/>
+                            <field name="available" string="Deposit available" widget="monetary"/>
+                            <field name="source" string="Source of deposit"/>
+                            <field name="add_to_loan" string="Do you want to add the fees to the loan?"/>
+                            <field name="remortgaging" string="If Remortgaging to take a further advance against your existing property please indicate the additional amount needed and the reason required"/>
+                            <field name="important" string="Of the following features, which is the most important to you?"/>
+                            <field name="depending" string="Depending on your answer to the question above; over what period would you like to either fix your monthly outgoings or be tied into a chosen variable arrangement? "/>
+                            <field name="indicate" string="Please indicate which of the following are important to you as major or minor objectives:"/>
+                            <field name="no_redemption" string="No redemption penalties for pay down of loan"/>
+                            <field name="speed" string="Speed of completion"/>
+                            <field name="lowest_possible" string="Lowest possible APR over the term of the loan"/>
+                            <field name="is_important" string="Is it important that these features are available without overhanging redemption penalties"/>
+                            <field name="describe" string="Please describe the client’s objectives in words"/>
+                        </group>
+                        <group>
+                            <field name="empty_field" string=""/>
+                            <field name="maximum_mortgage" string="Maximum mortgage required" widget="monetary"/>
+                            <field name="repayments_required" string="Repayment term required" widget="monetary"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="option_to_offset" string="Option to offset"/>
+                            <field name="fee_free" string="Fee free loan/ add fees to loan: low initial costs"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="details_of_property_to_be_mortgaged" string="Details of property to be mortgaged">
+                    <group>
+                        <group>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"
+                                       options='{"no_open": True}'/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country"
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                            <field name="tenure" string="Tenure"/>
+                            <field name="if_l_years" string="If Leasehold, remaining term"/>
+                            <field name="type_of_property" string="Type of property"/>
+                            <field name="if_a_flat" string="If a flat:"/>
+                            <field name="above_shops" string="is it above shops?"/>
+                            <field name="local_authority" string="is it ex local authority?"/>
+                            <field name="number_of_floors" string="number of floors"/>
+                            <field name="type_of_construction" string="Type of construction"/>
+                            <field name="year_of_construction" string="Year of construction"/>
+                            <field name="details" string="Solicitor’s Details"/>
+                            <field name="agent_details" string="Estate Agent Details"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="circumstances_objectives" string="Circumstances / Objectives">
+                    <group>
+                        <group>
+                            <field name="empty_field" string="Based on the Income and Regular Commitments detailed above, the monthly premium recommended for mortgage repayments should be in the region of:"/>
+                            <field name="from_1" string="from" widget="monetary"/>
+                            <field name="to_1" string="to" widget="monetary"/>
+                            <field name="empty_field" string="Based on your planned retirement age this commitment should be over a term of no longer than:"/>
+                            <field name="over" string="over"/>
+                            <field name="no_longer" string="no longer"/>
+                            <field name="empty_field" string=""/>
+                            <field name="prior" string="Prior to going through a series of specific mortgage related questions please describe the clients aims and objectives in seeking advice, their understanding of their options and existing preferences"/>
+                        </group>
+                        <group>
+                            <field name="empty_field" string="attitude to risk"/>
+                            <field name="do_you" string="Do you anticipate paying off the mortgage on the property(ies) being purchased/remortgaged by any means other than the sale of the said property?"/>
+                            <field name="if_you" string="If you wish to repay the loan in full at/by the end of the mortgage term, do you require a guarantee that this will be the case?"/>
+                            <field name="if_you_2" string="If you do not need a guarantee that the whole of the loan will be repaid at the end of the mortgage term would you require a guarantee that a pre-determined proportion of the loan will be repaid?"/>
+                            <field name="if_yes_2" string="If yes, what proportion?"/>
+                            <field name="if_you_3" string="	If you are considering a mortgage that does not guarantee the loan will be repaid at the end of the mortgage term (interest only), but you wish to repay the loan in full at this time how do you anticipate repaying the loan?"/>
+                            <field name="details_risks" string="Please give details"/>
+                            <field name="empty_field" string="Major Risks:"/>
+                            <field name="empty_field" string="      -The value of your property is not guaranteed to remain sufficient to repay your outstanding loan;"/>
+                            <field name="empty_field" string="      -Savings / Investment: While this method might provide an additional lump sum, there is a corresponding risk that your investment might not provide sufficient funds to repay your loan at the end of the mortgage term;"/>
+                            <field name="empty_field" string="      -Switch to repayment mortgage when affordable: Anticipated salary increases or reductions in expenses might not materialize preventing you from switching to a capital and repayment mortgage. As such there is a corresponding risk you might be unable to repay your loan. The later you leave contributing to the repayment of your loan the greater the monthly repayment required will be"/>
+                            <field name="answers" string="Given your answers to the questions above you have been classified as having a"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

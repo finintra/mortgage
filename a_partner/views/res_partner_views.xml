@@ -1,0 +1,154 @@
+<odoo>
+    <record id="view_partner_simple_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="partner_firstname.view_partner_simple_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='lastname']" position="before">
+                    <field name="title"
+                           options='{"no_open": True}'
+                           placeholder="e.g. Mister"
+                           attrs="{'invisible': [('is_company', '=', True)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="empty_field" string=""/>
+                <field name="family_state"/>
+                <field name="ni_number" string="NI Number"/>
+                <field name="date_of_birth"/>
+                <field name="place_of_birth"/>
+                <field name="children" string="Children's/dependants' full names and ages"/>
+                <field name="nationality"/>
+                <field name="residency"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="before">
+                <field name="empty_field" string=""/>
+                <field name="previous_addresses" style="margin-bottom:30px;" string="Previous addresses (last 3 years)"/>
+                <field name="empty_field" style="font-weight: bold"/>
+                <field name="sort_code"/>
+                <field name="account_number"/>
+                <field name="account_name"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='contact_addresses']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='sales_purchases']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='internal_notes']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='contact_addresses']" position="before">
+                <page string="Occupation details" name="occupation_details" autofocus="autofocus">
+                    <group>
+                        <group>
+                            <field name="function"
+                                   placeholder="e.g. Sales Director"
+                                   attrs="{'invisible': [('type','!=', 'contact')]}"/>
+                            <field name="emp_status" string="Employment status"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="Primary income (employed/PAYE)"/>
+                            <field name="employee_name" string="Employer’s Name"/>
+                            <field name="status" string="Status (contract/full time)"/>
+                            <field name="length_of_employment" string="Length of time in employment/start date"/>
+                            <field name="probationary" string="Are you in a probationary period?"/>
+                            <field name="total_annual" widget="monetary" string="Total annual income"/>
+                            <field name="addresses" string="Employer’s Address"/>
+                            <field name="significant_details" string="Significant details"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="primary income (self employed)"/>
+                            <field name="last_3_years_income" string="Last 3 years’ income" widget="monetary"/>
+                            <field name="last_2_years_income" string="" widget="monetary"/>
+                            <field name="last_1_years_income" string="" widget="monetary"/>
+                            <field name="projected_earnings" string="Projected earnings for this tax year"/>
+                            <field name="projected_earnings_next" string="Projected earnings for next tax year"/>
+                        </group>
+                        <group>
+                            <field name="contract_years" string="Number of years accounts available"/>
+                            <field name="anticipate_changes" string="Do you anticipate any changes to your circumstances or employment?"/>
+                            <field name="description" string="If so, please describe"/>
+                            <field name="empty_field" string=""/>
+                            <field name="note" string="Notes box (other income, previous employment details, etc)"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="Post-retirement income"/>
+                            <field name="planned_age" string="Planned retirement age"/>
+                            <field name="is_happy" string="Are you happy for a loan to run beyond your retirement date"/>
+                            <field name="post_retirement" widget="monetary" string="Anticipated post-retirement income"/>
+                            <field name="assets" string="On which assets is the above estimate based?"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Home details" name="home_details">
+                    <group>
+                        <group>
+                            <field name="owner" string="Please choose as appropriate"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="Existing Home"/>
+                            <field name="pur_date" string="Purchase date"/>
+                            <field name="pur_price" string="Purchase price"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="Existing mortgage"/>
+                            <field name="repayment_method" string="Repayment method"/>
+                            <field name="lender" string="Lender"/>
+                            <field name="amount_outstanding" string="Amount outstanding" widget="monetary"/>
+                            <field name="term_remaining" string="Term remaining"/>
+                            <field name="monthly_payment" string="Monthly payment" widget="monetary"/>
+                            <field name="additional_notes" string="Additional notes"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string="if renting or living with parents"/>
+                            <field name="monthly_rent" string="Monthly rent paid"/>
+                            <field name="electoral" string="On electoral roll at this address"/>
+                        </group>
+                        <group>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="pur_current" string="Current value"/>
+                            <field name="mortgage" string="Have you got a mortgage?"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="interest_rate" string="Interest rate"/>
+                            <field name="rate_type" string="Rate type"/>
+                            <field name="transfer_penalty" string="Transfer penalty"/>
+                            <field name="end_date" string="End date (for penalties)"/>
+                            <field name="ownership" string="Ownership of property"/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="empty_field" string=""/>
+                            <field name="tenancy_date" string="Date tenancy started"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Liabilities" name="liabilities">
+                    <group>
+                        <group>
+                            <field name="liabilities"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
