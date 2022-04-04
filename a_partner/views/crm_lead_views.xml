@@ -3,6 +3,9 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Owner</attribute>
+            </xpath>
             <xpath expr="//notebook//page[@name='internal_notes']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -46,7 +49,8 @@
                                     <field name="last_3_years_income" string="Last 3 years’ income" widget="monetary"/>
                                     <field name="last_2_years_income" string="" widget="monetary"/>
                                     <field name="last_1_years_income" string="" widget="monetary"/>
-                                    <field name="projected_earnings" widget="monetary" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings" widget="monetary"
+                                           string="Projected earnings for this tax year"/>
                                     <field name="projected_earnings_next" widget="monetary"
                                            string="Projected earnings for next tax year"/>
                                 </group>
@@ -143,7 +147,8 @@
                                            widget="monetary"/>
                                     <field name="last_2_years_income_2" string="" widget="monetary"/>
                                     <field name="last_1_years_income_2" string="" widget="monetary"/>
-                                    <field name="projected_earnings_2" widget="monetary" string="Projected earnings for this tax year"/>
+                                    <field name="projected_earnings_2" widget="monetary"
+                                           string="Projected earnings for this tax year"/>
                                     <field name="projected_earnings_next_2" widget="monetary"
                                            string="Projected earnings for next tax year"/>
                                 </group>
@@ -272,14 +277,19 @@
                             <field name="available" string="Deposit available" widget="monetary"/>
                             <field name="source" string="Source of deposit"/>
                             <field name="add_to_loan" string="Do you want to add the fees to the loan?"/>
-                            <field name="remortgaging" string="If Remortgaging to take a further advance against your existing property please indicate the additional amount needed and the reason required"/>
-                            <field name="important" string="Of the following features, which is the most important to you?"/>
-                            <field name="depending" string="Depending on your answer to the question above; over what period would you like to either fix your monthly outgoings or be tied into a chosen variable arrangement? "/>
-                            <field name="indicate" string="Please indicate which of the following are important to you as major or minor objectives:"/>
+                            <field name="remortgaging"
+                                   string="If Remortgaging to take a further advance against your existing property please indicate the additional amount needed and the reason required"/>
+                            <field name="important"
+                                   string="Of the following features, which is the most important to you?"/>
+                            <field name="depending"
+                                   string="Depending on your answer to the question above; over what period would you like to either fix your monthly outgoings or be tied into a chosen variable arrangement? "/>
+                            <field name="indicate"
+                                   string="Please indicate which of the following are important to you as major or minor objectives:"/>
                             <field name="no_redemption" string="No redemption penalties for pay down of loan"/>
                             <field name="speed" string="Speed of completion"/>
                             <field name="lowest_possible" string="Lowest possible APR over the term of the loan"/>
-                            <field name="is_important" string="Is it important that these features are available without overhanging redemption penalties"/>
+                            <field name="is_important"
+                                   string="Is it important that these features are available without overhanging redemption penalties"/>
                             <field name="describe" string="Please describe the client’s objectives in words"/>
                         </group>
                         <group>
@@ -338,31 +348,48 @@
                 <page name="circumstances_objectives" string="Circumstances / Objectives">
                     <group>
                         <group>
-                            <field name="empty_field" string="Based on the Income and Regular Commitments detailed above, the monthly premium recommended for mortgage repayments should be in the region of:"/>
+                            <field name="empty_field"
+                                   string="Based on the Income and Regular Commitments detailed above, the monthly premium recommended for mortgage repayments should be in the region of:"/>
                             <field name="from_1" string="from" widget="monetary"/>
                             <field name="to_1" string="to" widget="monetary"/>
-                            <field name="empty_field" string="Based on your planned retirement age this commitment should be over a term of no longer than:"/>
+                            <field name="empty_field"
+                                   string="Based on your planned retirement age this commitment should be over a term of no longer than:"/>
                             <field name="over" string="over"/>
                             <field name="no_longer" string="no longer"/>
                             <field name="empty_field" string=""/>
-                            <field name="prior" string="Prior to going through a series of specific mortgage related questions please describe the clients aims and objectives in seeking advice, their understanding of their options and existing preferences"/>
+                            <field name="prior"
+                                   string="Prior to going through a series of specific mortgage related questions please describe the clients aims and objectives in seeking advice, their understanding of their options and existing preferences"/>
                         </group>
                         <group>
                             <field name="empty_field" string="attitude to risk"/>
-                            <field name="do_you" string="Do you anticipate paying off the mortgage on the property(ies) being purchased/remortgaged by any means other than the sale of the said property?"/>
-                            <field name="if_you" string="If you wish to repay the loan in full at/by the end of the mortgage term, do you require a guarantee that this will be the case?"/>
-                            <field name="if_you_2" string="If you do not need a guarantee that the whole of the loan will be repaid at the end of the mortgage term would you require a guarantee that a pre-determined proportion of the loan will be repaid?"/>
+                            <field name="do_you"
+                                   string="Do you anticipate paying off the mortgage on the property(ies) being purchased/remortgaged by any means other than the sale of the said property?"/>
+                            <field name="if_you"
+                                   string="If you wish to repay the loan in full at/by the end of the mortgage term, do you require a guarantee that this will be the case?"/>
+                            <field name="if_you_2"
+                                   string="If you do not need a guarantee that the whole of the loan will be repaid at the end of the mortgage term would you require a guarantee that a pre-determined proportion of the loan will be repaid?"/>
                             <field name="if_yes_2" string="If yes, what proportion?"/>
-                            <field name="if_you_3" string="	If you are considering a mortgage that does not guarantee the loan will be repaid at the end of the mortgage term (interest only), but you wish to repay the loan in full at this time how do you anticipate repaying the loan?"/>
+                            <field name="if_you_3"
+                                   string="	If you are considering a mortgage that does not guarantee the loan will be repaid at the end of the mortgage term (interest only), but you wish to repay the loan in full at this time how do you anticipate repaying the loan?"/>
                             <field name="details_risks" string="Please give details"/>
                             <field name="empty_field" string="Major Risks:"/>
-                            <field name="empty_field" string="      -The value of your property is not guaranteed to remain sufficient to repay your outstanding loan;"/>
-                            <field name="empty_field" string="      -Savings / Investment: While this method might provide an additional lump sum, there is a corresponding risk that your investment might not provide sufficient funds to repay your loan at the end of the mortgage term;"/>
-                            <field name="empty_field" string="      -Switch to repayment mortgage when affordable: Anticipated salary increases or reductions in expenses might not materialize preventing you from switching to a capital and repayment mortgage. As such there is a corresponding risk you might be unable to repay your loan. The later you leave contributing to the repayment of your loan the greater the monthly repayment required will be"/>
-                            <field name="answers" string="Given your answers to the questions above you have been classified as having a"/>
+                            <field name="empty_field"
+                                   string="      -The value of your property is not guaranteed to remain sufficient to repay your outstanding loan;"/>
+                            <field name="empty_field"
+                                   string="      -Savings / Investment: While this method might provide an additional lump sum, there is a corresponding risk that your investment might not provide sufficient funds to repay your loan at the end of the mortgage term;"/>
+                            <field name="empty_field"
+                                   string="      -Switch to repayment mortgage when affordable: Anticipated salary increases or reductions in expenses might not materialize preventing you from switching to a capital and repayment mortgage. As such there is a corresponding risk you might be unable to repay your loan. The later you leave contributing to the repayment of your loan the greater the monthly repayment required will be"/>
+                            <field name="answers"
+                                   string="Given your answers to the questions above you have been classified as having a"/>
                         </group>
                     </group>
                 </page>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']//label[@for='name'][2]" position="attributes">
+                <attribute name="string">Lead</attribute>
+            </xpath>
+            <xpath expr="//group[@name='opportunity_partner']//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Client</attribute>
             </xpath>
         </field>
     </record>

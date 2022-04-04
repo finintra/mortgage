@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api, _
 
 
 class CrmLead(models.Model):
@@ -9,6 +9,16 @@ class CrmLead(models.Model):
             self.first_partner = True
         else:
             self.first_partner = False
+
+    @api.depends('partner_id')
+    def _compute_name(self):
+        for lead in self:
+            if not lead.name and lead.partner_id and lead.partner_id.name:
+                lead.name = _("%s's lead") % lead.partner_id.name
+
+    name = fields.Char(
+        'Lead', index=True, required=True,
+        compute='_compute_name', readonly=False, store=True)
 
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id, required=True)
     partner_id_2 = fields.Many2one(
