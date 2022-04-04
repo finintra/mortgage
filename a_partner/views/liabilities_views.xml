@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_liabilities_form" model="ir.ui.view">
+        <field name="name">liabilities.form</field>
+        <field name="model">liabilities</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="name" string="Name"/>
+                        <field name="owner_applicant" string="Owner (applicant 1, 2 or joint)"/>
+                        <field name="type_applicant" string="Type (secured/unsecured c.)"/>
+                        <field name="lender_applicant" string="Lender"/>
+                        <field name="balance_applicant" widget="monetary" string="Balance outstanding"/>
+                        <field name="monthly_applicant" widget="monetary" string="Monthly repayment"/>
+                        <field name="end_date_applicant" string="End date"/>
+                        <field name="mortgage_applicant" string="To be added to required mortgage"/>
+                    </group>
+                    <group>
+                        <field name="costs_associated"
+                               string="Have the long-term costs associated with consolidating short-term loans into long-term borrowing been explained?"/>
+                        <field name="possible_consequences"
+                               string="Has the possible consequences of securing unsecured loans against your home been explained?"/>
+                        <field name="judgments" string="Do you have any County Court Judgments?"/>
+                        <field name="settled" string="If yes; have they been settled?"/>
+                        <field name="bankrupt" string="Have you been declared Bankrupt?"/>
+                        <field name="discharged" string="If Yes; has this been discharged?"/>
+                        <field name="associated_notes"
+                               string="Associated Notes, including details of any independent voluntary agreements (IVAs)"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

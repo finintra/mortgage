@@ -82,8 +82,8 @@
                             <field name="last_3_years_income" string="Last 3 years’ income" widget="monetary"/>
                             <field name="last_2_years_income" string="" widget="monetary"/>
                             <field name="last_1_years_income" string="" widget="monetary"/>
-                            <field name="projected_earnings" string="Projected earnings for this tax year"/>
-                            <field name="projected_earnings_next" string="Projected earnings for next tax year"/>
+                            <field name="projected_earnings" widget="monetary" string="Projected earnings for this tax year"/>
+                            <field name="projected_earnings_next" widget="monetary" string="Projected earnings for next tax year"/>
                         </group>
                         <group>
                             <field name="contract_years" string="Number of years accounts available"/>
@@ -107,7 +107,7 @@
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string="Existing Home"/>
                             <field name="pur_date" string="Purchase date"/>
-                            <field name="pur_price" string="Purchase price"/>
+                            <field name="pur_price" widget="monetary" string="Purchase price"/>
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string="Existing mortgage"/>
                             <field name="repayment_method" string="Repayment method"/>
@@ -118,14 +118,14 @@
                             <field name="additional_notes" string="Additional notes"/>
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string="if renting or living with parents"/>
-                            <field name="monthly_rent" string="Monthly rent paid"/>
+                            <field name="monthly_rent" widget="monetary" string="Monthly rent paid"/>
                             <field name="electoral" string="On electoral roll at this address"/>
                         </group>
                         <group>
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string=""/>
-                            <field name="pur_current" string="Current value"/>
+                            <field name="pur_current" widget="monetary" string="Current value"/>
                             <field name="mortgage" string="Have you got a mortgage?"/>
                             <field name="empty_field" string=""/>
                             <field name="empty_field" string=""/>
@@ -144,7 +144,8 @@
                 <page string="Liabilities" name="liabilities">
                     <group>
                         <group>
-                            <field name="liabilities"/>
+                            <field name="liabilities">
+                            </field>
                         </group>
                     </group>
                 </page>

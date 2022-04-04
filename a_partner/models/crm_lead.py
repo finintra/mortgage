@@ -10,6 +10,7 @@ class CrmLead(models.Model):
         else:
             self.first_partner = False
 
+    currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id, required=True)
     partner_id_2 = fields.Many2one(
         'res.partner', string='Customer', check_company=True, index=True, tracking=10)
     email_from_2 = fields.Char(related="partner_id_2.email", readonly=False)
@@ -70,7 +71,7 @@ class CrmLead(models.Model):
     lender = fields.Char(related="partner_id.lender", readonly=False)
     amount_outstanding = fields.Float(related="partner_id.amount_outstanding", readonly=False)
     term_remaining = fields.Char(related="partner_id.term_remaining", readonly=False)
-    monthly_payment = fields.Char(related="partner_id.monthly_payment", readonly=False)
+    monthly_payment = fields.Float(related="partner_id.monthly_payment", readonly=False)
     interest_rate = fields.Char(related="partner_id.interest_rate", readonly=False)
     rate_type = fields.Char(related="partner_id.rate_type", readonly=False)
     transfer_penalty = fields.Char(related="partner_id.transfer_penalty", readonly=False)
@@ -81,8 +82,8 @@ class CrmLead(models.Model):
     electoral = fields.Boolean(related="partner_id.electoral", readonly=False)
     tenancy_date = fields.Date(related="partner_id.tenancy_date", readonly=False)
 
-    liabilities = fields.Many2many(related="partner_id.liabilities", readonly=False)
-    liabilities_2 = fields.Many2many(related="partner_id_2.liabilities", readonly=False)
+    liabilities = fields.One2many(related="partner_id.liabilities", readonly=False)
+    liabilities_2 = fields.One2many(related="partner_id_2.liabilities", readonly=False)
 
     function_2 = fields.Char(related="partner_id_2.function", readonly=False)
     emp_status_2 = fields.Selection(related="partner_id_2.emp_status", readonly=False)
@@ -116,7 +117,7 @@ class CrmLead(models.Model):
     lender_2 = fields.Char(related="partner_id_2.lender", readonly=False)
     amount_outstanding_2 = fields.Float(related="partner_id_2.amount_outstanding", readonly=False)
     term_remaining_2 = fields.Char(related="partner_id_2.term_remaining", readonly=False)
-    monthly_payment_2 = fields.Char(related="partner_id_2.monthly_payment", readonly=False)
+    monthly_payment_2 = fields.Float(related="partner_id_2.monthly_payment", readonly=False)
     interest_rate_2 = fields.Char(related="partner_id_2.interest_rate", readonly=False)
     rate_type_2 = fields.Char(related="partner_id_2.rate_type", readonly=False)
     transfer_penalty_2 = fields.Char(related="partner_id_2.transfer_penalty", readonly=False)

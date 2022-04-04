@@ -70,7 +70,7 @@ class Partner(models.Model):
     lender = fields.Char()
     amount_outstanding = fields.Float()
     term_remaining = fields.Char()
-    monthly_payment = fields.Char()
+    monthly_payment = fields.Float()
     interest_rate = fields.Char()
     rate_type = fields.Char()
     transfer_penalty = fields.Char()
@@ -81,4 +81,4 @@ class Partner(models.Model):
     electoral = fields.Boolean()
     tenancy_date = fields.Date()
 
-    liabilities = fields.Many2many("liabilities")
+    liabilities = fields.One2many("liabilities", "partner_ids", reanonly=False)

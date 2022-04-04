@@ -19,3 +19,5 @@ class Liabilities(models.Model):
     bankrupt = fields.Boolean()
     discharged = fields.Boolean()
     associated_notes = fields.Text()
+    currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id, required=True)
+    partner_ids = fields.Char(readonly=True, string="", default="")
