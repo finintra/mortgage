@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 function InvoiceScanScreen({ onInvoiceScanned }) {
   const [error, setError] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    // Auto-focus input on mount
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
 
   useEffect(() => {
     // Simulate invoice scanner listener
     const handleScan = (e) => {
       // For demo: press 'i' to simulate invoice scan, 'w' for wrong invoice
       if (e.key === 'i') {
+        setInputValue('OUT/00123')
         onInvoiceScanned('OUT/00123')
       } else if (e.key === 'w') {
         setError(true)
@@ -18,6 +28,22 @@ function InvoiceScanScreen({ onInvoiceScanned }) {
     window.addEventListener('keypress', handleScan)
     return () => window.removeEventListener('keypress', handleScan)
   }, [onInvoiceScanned])
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value)
+  }
+
+  const handleInputSubmit = (e) => {
+    e.preventDefault()
+    if (inputValue.trim()) {
+      onInvoiceScanned(inputValue)
+    }
+  }
+
+  const handleCameraClick = async () => {
+    // In production, this would trigger camera-based barcode scanning
+    alert('Камера відкриється для сканування накладної')
+  }
 
   if (error) {
     return (
@@ -46,6 +72,33 @@ function InvoiceScanScreen({ onInvoiceScanned }) {
       <p className="screen-subtitle">
         Піднесіть сканер до накладної
       </p>
+
+      {/* Input zone with camera button */}
+      <form onSubmit={handleInputSubmit} className="scan-input-zone">
+        <div className="scan-input-container">
+          <input
+            ref={inputRef}
+            type="text"
+            className="scan-input"
+            placeholder="Скануйте або введіть"
+            value={inputValue}
+            onChange={handleInputChange}
+            autoFocus
+          />
+          <button
+            type="button"
+            className="camera-button"
+            onClick={handleCameraClick}
+            aria-label="Відкрити камеру"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+          </button>
+        </div>
+        <p className="input-hint">Або натисніть камеру для сканування</p>
+      </form>
 
       <div className="hint-text" style={{ marginTop: 'auto', opacity: 0.5 }}>
         Демо: натисніть 'i' для сканування
