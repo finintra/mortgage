@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>12. Акаунт заблоковано</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #B71C1C;
+        }
+        .screen-icon {
+            font-size: clamp(100px, 18vw, 160px);
+            color: white;
+            margin-bottom: 40px;
+        }
+        .screen-title {
+            font-size: clamp(70px, 11vw, 120px);
+            font-weight: 700;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        .screen-subtitle {
+            font-size: clamp(35px, 5vw, 50px);
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .button {
+            min-height: 100px;
+            width: 90%;
+            max-width: 600px;
+            border: none;
+            border-radius: 12px;
+            font-size: clamp(40px, 6vw, 60px);
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Всі екрани</a>
+
+    <div class="screen">
+        <div class="screen-icon">🔒</div>
+
+        <h1 class="screen-title">
+            АКАУНТ ДЕАКТИВОВАНО
+        </h1>
+
+        <p class="screen-subtitle">
+            Зверніться до адміністратора
+        </p>
+
+        <button class="button">
+            ЗАКРИТИ ЗАСТОСУНОК
+        </button>
+    </div>
+</body>
+</html>
