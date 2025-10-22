@@ -116,19 +116,7 @@
             padding: 40px 20px;
             color: #999;
             font-size: 14px;
-        }
-
-        .category {
-            margin-bottom: 40px;
-        }
-
-        .category-title {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #4CAF50;
+            line-height: 1.6;
         }
 
         /* Password Protection Overlay */
@@ -236,14 +224,12 @@
         <h1>📱 Складський Сканер - Всі Екрани</h1>
         <div class="description">
             <p>Натисніть на будь-який екран щоб побачити його у повному розмірі</p>
-            <p><strong>Дизайн:</strong> Великі шрифти (120-200px), контрастні кольори, mobile-first</p>
+            <p><strong>Дизайн:</strong> Великі шрифти, контрастні кольори, mobile-first, оптимізовано для Android 360x740px</p>
+            <p><strong>Навігація:</strong> Використовуйте кнопки "Наступний екран →" для послідовного перегляду всіх 13 екранів</p>
             <p><strong>Нове:</strong> Input zones + Кнопки камери на всіх екранах сканування! 📷</p>
         </div>
 
-        <!-- Authentication -->
-        <div class="category">
-            <h2 class="category-title">1. Авторизація</h2>
-            <div class="screen-grid">
+        <div class="screen-grid">
                 <a href="screen-01-badge-scan.html" class="screen-card">
                     <div class="screen-preview badge">
                         <span class="screen-number">01</span>
@@ -294,13 +280,7 @@
                         <div class="screen-desc">Цифрова клавіатура для введення 4-значного PIN коду.</div>
                     </div>
                 </a>
-            </div>
-        </div>
 
-        <!-- Order Binding -->
-        <div class="category">
-            <h2 class="category-title">2. Прив'язка замовлення</h2>
-            <div class="screen-grid">
                 <a href="screen-03-invoice-scan.html" class="screen-card">
                     <div class="screen-preview invoice">
                         <span class="screen-number">03</span>
@@ -319,13 +299,7 @@
                         <div class="screen-desc">Сканування накладної (OUT/...) для початку роботи. Ввід + камера.</div>
                     </div>
                 </a>
-            </div>
-        </div>
 
-        <!-- Working Process -->
-        <div class="category">
-            <h2 class="category-title">3. Робочий процес</h2>
-            <div class="screen-grid">
                 <a href="screen-04-product-scan.html" class="screen-card">
                     <div class="screen-preview product">
                         <span class="screen-number">04</span>
@@ -403,13 +377,7 @@
                         <div class="screen-desc">Товар повністю відсканований, перехід до наступного (500мс).</div>
                     </div>
                 </a>
-            </div>
-        </div>
 
-        <!-- Order Completion -->
-        <div class="category">
-            <h2 class="category-title">4. Завершення замовлення</h2>
-            <div class="screen-grid">
                 <a href="screen-09-order-completed.html" class="screen-card">
                     <div class="screen-preview completed">
                         <span class="screen-number">09</span>
@@ -436,24 +404,23 @@
                         <div class="screen-desc">Фінальне підтвердження перед відправкою на упакування.</div>
                     </div>
                 </a>
-            </div>
-        </div>
 
-        <!-- Additional -->
-        <div class="category">
-            <h2 class="category-title">5. Додаткові екрани</h2>
-            <div class="screen-grid">
                 <a href="screen-11-cancel-picking.html" class="screen-card">
                     <div class="screen-preview badge">
                         <span class="screen-number">11</span>
-                        <div style="font-size: 35px; text-align: center; color: #F44336; font-weight: 700;">
-                            ВІДМІНИТИ<br>ЗБІРКУ?
-                            <div style="font-size: 20px; color: #666; margin-top: 15px;">Введіть PIN</div>
+                        <div style="font-size: 25px; text-align: center; padding: 20px;">
+                            <div style="font-size: 60px; color: #F44336; margin-bottom: 15px;">⚠️</div>
+                            <div style="font-size: 35px; color: #F44336; font-weight: 700; margin-bottom: 15px;">ВІДМІНИТИ<br>ЗБІРКУ?</div>
+                            <div style="font-size: 16px; color: #666; margin-bottom: 10px;">Прогрес буде втрачено</div>
+                            <div style="display: flex; flex-direction: column; gap: 8px; max-width: 250px; margin: 10px auto;">
+                                <div style="background: #F44336; color: white; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: 700;">ТАК, ВІДМІНИТИ</div>
+                                <div style="background: #757575; color: white; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: 700;">НІ, ПРОДОВЖИТИ</div>
+                            </div>
                         </div>
                     </div>
                     <div class="screen-info">
                         <div class="screen-title">Відміна збірки</div>
-                        <div class="screen-desc">Підтвердження відміни через введення PIN коду.</div>
+                        <div class="screen-desc">Підтвердження відміни - просто два кнопки (без PIN).</div>
                     </div>
                 </a>
 
@@ -470,12 +437,12 @@
                         <div class="screen-desc">Повідомлення про деактивований акаунт.</div>
                     </div>
                 </a>
-            </div>
         </div>
 
         <div class="footer">
-            <p>Всього: 12 екранів | Технології: React 18 + Vite | Дизайн: Mobile-first</p>
+            <p>Всього: 13 екранів | Технології: React 18 + Vite | Дизайн: Mobile-first</p>
             <p style="margin-top: 10px;">Натисніть на будь-який екран для перегляду у повному розмірі</p>
+            <p style="margin-top: 10px;">Використовуйте кнопки навігації для послідовного перегляду екранів</p>
         </div>
     </div>
     </div>
