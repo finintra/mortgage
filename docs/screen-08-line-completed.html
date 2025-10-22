@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>08. Рядок закрито</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #4CAF50;
+        }
+        .screen-title {
+            font-size: clamp(100px, 18vw, 150px);
+            font-weight: 700;
+            text-align: center;
+            color: white;
+            line-height: 1.2;
+        }
+        .nav-link, .back-link {
+            position: fixed;
+            background: rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav-link { bottom: 20px; right: 20px; }
+        .back-link { top: 20px; left: 20px; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Всі екрани</a>
+
+    <div class="screen">
+        <h1 class="screen-title">
+            ГОТОВО.<br />ДАЛІ
+        </h1>
+    </div>
+
+    <a href="screen-09-order-completed.html" class="nav-link">Наступний екран →</a>
+</body>
+</html>
